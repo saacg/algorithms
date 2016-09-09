@@ -1,0 +1,70 @@
+Isaac Goldman
+EC 330 HW 6
+Problem 4 Solutions Write Up
+
+a)
+
+Method: I used a simple 3-state finite-state-machine to find strings of numbers that matched the BU ID parameters
+and made sure the sum of the digits was greater than 28. Function read in from BigData.txt one character at a time
+and remained in state 0 until a 'U' was read in. State 1 made sure the next characters were digits, and summed 
+them up, and then state 3 decided whether or not the sum was greater than 28 and should be added to the 
+total count. 
+
+
+Solution: 49323 BU IDs in the file with sums > 28
+
+Execution Print-out:
+
+bash-4.1$ time ./testfourA 
+49323
+
+real	0m11.608s
+user	0m11.542s
+sys	0m0.063s
+
+
+b)
+
+Method: I stored the dictionary in a Trie (excluding words that ended with an 'n', the last letter of my
+last name), and then I read in from BigData.txt one character at a time and concatenated them into a string
+until a non-letter was read in. Then I took the resulting word and broke it down into all of its unique subwords
+to test for a match in the dictionary. If a match was found, the counter was incremented. 
+
+
+Solution: 451533304 
+
+Execution print-out:
+
+bash-4.1$ time ./testfourB
+451533304
+
+real	2m56.362s
+user	2m56.101s
+sys	0m0.233s
+
+
+
+
+
+c)
+
+Method: I read the entire BigData file in as one string, and then iterated through the string, and checked each
+element to see if it was a pivot position in an odd or even palindrome. I kept a variable to store the max length
+found and one to store the starting position of the biggest palindrome to be able to print it out without having
+to store it in an array. 
+
+Solution:    BRpmpRB  
+11 characters
+
+Execution print-out:
+bash-4.1$ time ./testfourC
+  BRpmpRB  
+
+real	0m10.756s
+user	0m8.606s
+sys	0m2.026s
+
+
+
+
+
